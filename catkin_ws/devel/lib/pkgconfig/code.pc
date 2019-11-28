@@ -1,0 +1,8 @@
+prefix=/home/mateo/catkin_ws/devel
+
+Name: code
+Description: Description of code
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/mateo/catkin_ws/devel/lib 
+Requires: 

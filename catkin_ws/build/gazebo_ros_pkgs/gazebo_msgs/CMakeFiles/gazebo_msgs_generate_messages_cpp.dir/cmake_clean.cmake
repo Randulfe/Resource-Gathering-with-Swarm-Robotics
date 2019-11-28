@@ -1,0 +1,40 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/gazebo_msgs_generate_messages_cpp"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/ContactsState.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/ODEPhysics.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/LinkState.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/ContactState.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/WorldState.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/ModelState.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/ODEJointProperties.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/ModelStates.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/LinkStates.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/ApplyJointEffort.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/SetJointTrajectory.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/DeleteLight.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/GetLightProperties.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/BodyRequest.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/SetPhysicsProperties.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/SetJointProperties.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/SetModelState.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/SpawnModel.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/GetPhysicsProperties.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/ApplyBodyWrench.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/GetLinkState.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/SetLightProperties.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/GetLinkProperties.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/GetWorldProperties.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/SetLinkState.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/DeleteModel.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/SetLinkProperties.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/GetJointProperties.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/GetModelProperties.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/SetModelConfiguration.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/JointRequest.h"
+  "/home/mateo/catkin_ws/devel/include/gazebo_msgs/GetModelState.h"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang )
+  include(CMakeFiles/gazebo_msgs_generate_messages_cpp.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

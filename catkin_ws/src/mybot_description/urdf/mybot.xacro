@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+
+<robot name="robot_model" xmlns:xacro="http://www.ros.org/wiki/xacro">
+ <xacro:arg name="nsp" default="h0" />
+<xacro:arg name="nsp" default="h0_tf" />
+        
+
+<xacro:property name="PI" value="3.1415926535897931"/>
+
+<xacro:property name="chassisHeight" value="0.1"/>
+<xacro:property name="chassisLength" value="0.4"/>
+<xacro:property name="chassisWidth" value="0.2"/>
+<xacro:property name="chassisMass" value="50"/>
+
+<xacro:property name="casterRadius" value="0.05"/>
+<xacro:property name="casterMass" value="5"/>
+
+<xacro:property name="wheelWidth" value="0.05"/>
+<xacro:property name="wheelRadius" value="0.1"/>
+<xacro:property name="wheelPos" value="0.2"/>
+<xacro:property name="wheelMass" value="5"/>
+
+<xacro:property name="cameraSize" value="0.05"/>
+<xacro:property name="cameraMass" value="0.1"/>
+
+ <xacro:include filename="$(find mybot_description)/urdf/mybot.gazebo" />
+ <xacro:include filename="$(find mybot_description)/urdf/materials.xacro" />
+ <xacro:include filename="$(find mybot_description)/urdf/macros.xacro" />
+
+
+<link name='$(arg nsp)/footprint'/>
+
+<joint name="$(arg nsp)/base_joint" type="fixed">
+  <parent link="$(arg nsp)/footprint"/>
+  <child link="$(arg nsp)/chassis"/>
+</joint>
+
+
+<link name='$(arg nsp)/chassis'>
+  <collision> 
+    <origin xyz="0 0 ${wheelRadius}" rpy="0 0 0"/> 
+    <geometry> 
+      <cylinder length="0.1" radius="0.2"/>
+    </geometry> 
+  </collision>
+  <visual> 
+    <origin xyz="0 0 ${wheelRadius}" rpy="0 0 0"/> 
+    <geometry> 
+       <cylinder length="0.1" radius="0.2"/>
+    </geometry> 
+    <material name="orange"/>
+  </visual>
+  <inertial> 
+    <origin xyz="0 0 ${wheelRadius}" rpy="0 0 0"/> 
+    <mass value="${chassisMass}"/> 
+    <cylinder_inertia m="${chassisMass}" r="0.2" h="0.1"/>
+  </inertial>
+</link>
+
+
+<link name="$(arg nsp)/caster_wheel">
+  <collision>
+    <origin xyz="${casterRadius-chassisLength/2} 0 ${casterRadius-chassisHeight+wheelRadius}" rpy="0 0 0"/>
+    <geometry>
+      <sphere radius="${casterRadius}"/>
+    </geometry>
+  </collision>
+  
+  <visual>
+    <origin xyz="${casterRadius-chassisLength/2} 0 ${casterRadius-chassisHeight+wheelRadius}" rpy="0 0 0"/>
+    <geometry>
+      <sphere radius="${casterRadius}"/>
+    </geometry>
+    <material name="red"/>
+  </visual>
+
+  <inertial>
+    <origin xyz="${casterRadius-chassisLength/2} 0 ${casterRadius-chassisHeight+wheelRadius}" rpy="0 0 0"/>
+    <mass value="${casterMass}"/>
+    <sphere_inertia m="${casterMass}" r="${casterRadius}"/>
+  </inertial>
+</link>
+
+<joint name="$(arg nsp)/fixed" type="fixed">
+  <parent link="$(arg nsp)/chassis"/>
+  <child link="$(arg nsp)/caster_wheel"/>
+</joint>
+
+
+<wheel lr="right" tY="-1.65"/>
+<wheel lr="left" tY="1.65"/>
+
+
+<link name="$(arg nsp)/sensor_base">
+  <collision>
+    <origin xyz="0 0 0.2 " rpy="0 0 0"/>
+    <geometry>
+      <box size="0.1 0.1 0.1"/>
+    </geometry>
+  </collision>
+  
+  <visual>
+    <origin xyz="0 0 0.2" rpy="0 0 0"/>
+    <geometry>
+      <box size="0.1 0.1 0.1"/>
+    </geometry>
+    <material name="red"/>
+  </visual>
+
+  <inertial>
+    <origin xyz="0 0 0.2" rpy="0 0 0"/>
+    <mass value="1"/>
+    <inertia ixx="1" ixy="0" ixz="0" iyy="1" iyz="0" izz="1" />
+  </inertial>
+</link>
+
+<joint name="$(arg nsp)/sensor_base" type="fixed">
+  <parent link="$(arg nsp)/chassis"/>
+  <child link="$(arg nsp)/sensor_base"/>
+</joint>
+
+
+  <joint name="$(arg nsp)/light_sensor_joint" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="0.15 -0.1 0.2" rpy="0 0 3.14"/>
+    <parent link="$(arg nsp)/chassis"/>
+    <child link="$(arg nsp)/light_sensor"/>
+  </joint>
+
+  <joint name="$(arg nsp)/light_sensor_joint_second" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="0.15 0.1 0.2" rpy="0 0 3.14"/>
+    <parent link="$(arg nsp)/chassis"/>
+    <child link="$(arg nsp)/light_sensor_second"/>
+  </joint>
+
+
+
+
+  <!-- Light Sensor A -->
+  <link name="$(arg nsp)/light_sensor">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+    <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+       <box size="0.1 0.1 0.1"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+
+
+  <!-- Light Sensor B -->
+  <link name="$(arg nsp)/light_sensor_second">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+    <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+       <box size="0.1 0.1 0.1"/>
+      </geometry>
+      <material name="black"/>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+
+  <joint name="$(arg nsp)/hokuyo_joint_0" type="fixed">
+    <axis xyz="0 1 0" />
+    <origin xyz="0 0 0.28" rpy="0 0 0"/>
+    <parent link="$(arg nsp)/sensor_base"/>
+    <child link="$(arg nsp)/hokuyo_link_0"/>
+  </joint>
+
+
+
+  <!-- Hokuyo Laser -->
+  <link name="$(arg nsp)/hokuyo_link_0">
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+    <box size="0.1 0.1 0.1"/>
+      </geometry>
+    </collision>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://mybot_description/meshes/hokuyo.dae"/>
+      </geometry>
+    </visual>
+
+    <inertial>
+      <mass value="1e-5" />
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-6" ixy="0" ixz="0" iyy="1e-6" iyz="0" izz="1e-6" />
+    </inertial>
+  </link>
+
+</robot>
+

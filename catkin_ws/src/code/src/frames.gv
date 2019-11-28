@@ -1,0 +1,13 @@
+digraph G {
+"footprint" -> "chassis"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 412.139 sec old)\nBuffer length: 0.000 sec\n"];
+"odom" -> "footprint"[label="Broadcaster: /gazebo\nAverage rate: 100.216 Hz\nMost recent transform: 412.135 ( 0.004 sec old)\nBuffer length: 4.630 sec\n"];
+"chassis" -> "caster_wheel"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 412.139 sec old)\nBuffer length: 0.000 sec\n"];
+"sensor_base" -> "hokuyo_link_0"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 412.139 sec old)\nBuffer length: 0.000 sec\n"];
+"chassis" -> "sensor_base"[label="Broadcaster: /robot_state_publisher\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 412.139 sec old)\nBuffer length: 0.000 sec\n"];
+"chassis" -> "left_wheel"[label="Broadcaster: /robot_state_publisher\nAverage rate: 48.380 Hz\nMost recent transform: 412.134 ( 0.005 sec old)\nBuffer length: 4.630 sec\n"];
+"chassis" -> "right_wheel"[label="Broadcaster: /robot_state_publisher\nAverage rate: 48.380 Hz\nMost recent transform: 412.134 ( 0.005 sec old)\nBuffer length: 4.630 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 412.139"[ shape=plaintext ] ;
+ }->"odom";
+}

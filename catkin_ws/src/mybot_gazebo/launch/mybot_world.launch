@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<launch>	  
+
+  <arg name="namespace" default="mybot" />
+  <arg name="tfpre" default="$(arg namespace)" />
+
+ <param name="robot_description" command="$(find xacro)/xacro.py '$(find mybot_description)/urdf/mybot.xacro'
+ nsp:=$(arg namespace)" />
+
+ 
+
+ <node name="mybot_spawn" pkg="gazebo_ros" type="spawn_model" 
+output="screen"
+respawn="false"
+ args="-urdf 
+       -param robot_description
+       -model robot_$(arg namespace)" />
+
+
+   <node pkg="mybot_gazebo" type="map_broadcaster"
+          name="map_broadcaster">
+   <param name="param" value="/$(arg tfpre)/odom"/>
+   </node>
+
+   <node pkg="mybot_gazebo" type="changer"
+          name="changer"/>
+
+
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="state_publisher" 
+        pkg="robot_state_publisher" 
+        type="robot_state_publisher" 
+        respawn="false" output="screen">
+    <remap from="/joint_states" to="/$(arg tfpre)/joint_states" />
+  </node>
+
+ <rosparam file="$(find mybot_control)/config/mybot_control.yaml" command="load"/>
+
+  <!-- load the controllers -->
+  <node name="controller_spawner"
+    pkg="controller_manager"
+    type="spawner" respawn="false"
+    output="screen" 
+    args="joint_state_controller
+      rightWheel_effort_controller
+      leftWheel_effort_controller"/>
+
+
+</launch>

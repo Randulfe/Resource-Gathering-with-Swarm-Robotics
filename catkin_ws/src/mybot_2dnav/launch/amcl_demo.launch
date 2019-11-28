@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="scan_topic" value="/mybot1/laser" />
+    <arg name="odom_topic" value="/mybot1/odom_diffdrive" />
+    <arg name="/use_sim_time" value="true"/>
+  <!-- Map server -->
+  <arg name="map_file" default="$(find code)/src/maps/mymap.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+   <!--- Run AMCL -->
+  <include file="$(find mybot_2dnav)/launch/amcl.launch" />
+
+  <!--- Run Move Base -->
+  <include file="$(find mybot_2dnav)/launch/move_base.launch" />
+
+
+</launch>

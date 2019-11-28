@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>	  
+	<include file="$(find gazebo_ros)/launch/empty_world.launch">	    
+		<arg name="world_name" value="$(find mybot_gazebo)/worlds/mybot.world"/>	    
+		<arg name="gui" value="true"/>  
+	</include>
+
+
+	<group ns="mybot1">
+	<include file="$(find mybot_gazebo)/launch/mybot_world.launch">
+	<arg name="namespace" value="mybot1"/>
+	</include>
+	</group>
+
+
+<node name="rviz" pkg="rviz" type="rviz"  output="screen"/>
+
+</launch>

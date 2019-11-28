@@ -1,0 +1,24 @@
+digraph G {
+"footprint" -> "chassis"[label="Broadcaster: /mybot0/robot_state_publisher_mybot0\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 2273.229 sec old)\nBuffer length: 0.000 sec\n"];
+"chassis" -> "caster_wheel"[label="Broadcaster: /mybot0/robot_state_publisher_mybot0\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 2273.229 sec old)\nBuffer length: 0.000 sec\n"];
+"sensor_base" -> "hokuyo_link_0"[label="Broadcaster: /mybot0/robot_state_publisher_mybot0\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 2273.229 sec old)\nBuffer length: 0.000 sec\n"];
+"chassis" -> "sensor_base"[label="Broadcaster: /mybot0/robot_state_publisher_mybot0\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 2273.229 sec old)\nBuffer length: 0.000 sec\n"];
+"chassis" -> "light_sensor"[label="Broadcaster: /mybot0/robot_state_publisher_mybot0\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 2273.229 sec old)\nBuffer length: 0.000 sec\n"];
+"chassis" -> "light_sensor_second"[label="Broadcaster: /mybot0/robot_state_publisher_mybot0\nAverage rate: 10000.000 Hz\nMost recent transform: 0.000 ( 2273.229 sec old)\nBuffer length: 0.000 sec\n"];
+"mybot1/odom" -> "mybot1/footprint"[label="Broadcaster: /gazebo\nAverage rate: 100.134 Hz\nMost recent transform: 2273.225 ( 0.004 sec old)\nBuffer length: 3.735 sec\n"];
+"mybot0/odom" -> "mybot0/footprint"[label="Broadcaster: /gazebo\nAverage rate: 100.188 Hz\nMost recent transform: 2273.220 ( 0.009 sec old)\nBuffer length: 3.723 sec\n"];
+"chassis" -> "left_wheel"[label="Broadcaster: /mybot1/robot_state_publisher_mybot1\nAverage rate: 88.441 Hz\nMost recent transform: 2273.225 ( 0.004 sec old)\nBuffer length: 3.720 sec\n"];
+"chassis" -> "right_wheel"[label="Broadcaster: /mybot1/robot_state_publisher_mybot1\nAverage rate: 88.441 Hz\nMost recent transform: 2273.225 ( 0.004 sec old)\nBuffer length: 3.720 sec\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 2273.229"[ shape=plaintext ] ;
+ }->"footprint";
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 2273.229"[ shape=plaintext ] ;
+ }->"mybot1/odom";
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 2273.229"[ shape=plaintext ] ;
+ }->"mybot0/odom";
+}
