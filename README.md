@@ -18,6 +18,6 @@ In terms of the actual robots, these were their specifications:
 * The robots used had a 180º sonar sensor, two powered front wheels and one rear small wheel. 
 * They had a Atmel microcontroller connected to a wifi module to use communications. 
 
-I created the robotic models with ROS and used Gazebo as the simulation environment. For mapping the sensorial and path planning information I used Rviz. 
+I created the robotic models with `ROS` and used `Gazebo` as the simulation environment. For mapping the sensorial and path planning information I used `Rviz`. 
 
-You can find more about this project and specially the technologies and AI methods I used and why in the full report on this repository. 
+You can find more about this project and specially the technologies and AI methods I used and why in the [final report](https://github.com/Randulfe/Resource-Gathering-with-Swarm-Robotics/blob/master/FinalReport.pdf). 
