@@ -13,7 +13,7 @@ These were the main specifications of the problem:
 * These resources were spots of light that would be placed at random position with high probability of respawning in their first position.
 * Once a robot finds a resource, the light spot would be off (the resource has been collected) and the robot must find the easiest path to his base.
 * Robots must communicate effectively to be both exploring and visiting previous resource spots in the most optimised way without hitting the walls of the maze. 
-
+---
 In terms of the actual robots, these were their specifications:
 * The robots used had a 180º sonar sensor, two powered front wheels and one rear small wheel. 
 * They had a Atmel microcontroller connected to a wifi module to use communications. 
